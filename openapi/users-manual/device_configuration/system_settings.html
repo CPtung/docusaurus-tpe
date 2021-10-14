@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>System Settings - ThingsPro Edge - User&#x27;s Manual</title>
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../overview/what-is-TPE.html"><strong aria-hidden="true">1.</strong> What is ThingsPro Edge?</a></li><li class="chapter-item expanded "><a href="../overview/what-is-TPP.html"><strong aria-hidden="true">2.</strong> What is ThingsPro Proxy?</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../quick_started/initial_configuration.html"><strong aria-hidden="true">3.</strong> Initial Configuration</a></li><li class="chapter-item expanded "><a href="../quick_started/installation.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Northbound Services</li><li class="chapter-item expanded "><a href="../northbound/mqtt_client.html"><strong aria-hidden="true">5.</strong> MQTT Client</a></li><li class="chapter-item expanded "><a href="../northbound/sparkplugB.html"><strong aria-hidden="true">6.</strong> Sparkplug B.</a></li><li class="chapter-item expanded "><a href="../northbound/aid.html"><strong aria-hidden="true">7.</strong> Azure IoT Device</a></li><li class="chapter-item expanded "><a href="../northbound/aie.html"><strong aria-hidden="true">8.</strong> Azure IoT Edge</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../northbound/azure-iotedge/ta.html"><strong aria-hidden="true">8.1.</strong> ThingsPro Agent</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../northbound/azure-iotedge/ta_twin.html"><strong aria-hidden="true">8.1.1.</strong> Module Twin</a></li><li class="chapter-item expanded "><a href="../northbound/azure-iotedge/ta_command.html"><strong aria-hidden="true">8.1.2.</strong> Direct Method</a></li></ol></li><li class="chapter-item expanded "><a href="../northbound/azure-iotedge/module.html"><strong aria-hidden="true">8.2.</strong> Module Development</a></li></ol></li><li class="chapter-item expanded "><a href="../northbound/aws_iot_core.html"><strong aria-hidden="true">9.</strong> AWS IoT Core</a></li><li class="chapter-item expanded affix "><li class="part-title">Southbound Services</li><li class="chapter-item expanded "><a href="../southbound_services/modbus.html"><strong aria-hidden="true">10.</strong> Modbus</a></li><li class="chapter-item expanded "><a href="../southbound_services/opcua.html"><strong aria-hidden="true">11.</strong> OPC UA Server </a></li><li class="chapter-item expanded affix "><li class="part-title">Device Configuration</li><li class="chapter-item expanded "><a href="../device_configuration/dashboard.html"><strong aria-hidden="true">12.</strong> Dashboard</a></li><li class="chapter-item expanded "><a href="../device_configuration/general_settings.html"><strong aria-hidden="true">13.</strong> General Settings</a></li><li class="chapter-item expanded "><a href="../device_configuration/system_settings.html" class="active"><strong aria-hidden="true">14.</strong> System Settings</a></li><li class="chapter-item expanded "><a href="../device_configuration/import_export.html"><strong aria-hidden="true">15.</strong> Import/ Export</a></li><li class="chapter-item expanded "><a href="../device_configuration/sys_event_logs.html"><strong aria-hidden="true">16.</strong> System/ Event Logs</a></li><li class="chapter-item expanded affix "><li class="part-title">Security</li><li class="chapter-item expanded "><a href="../security/user_management.html"><strong aria-hidden="true">17.</strong> User Management</a></li><li class="chapter-item expanded "><a href="../security/upgrade.html"><strong aria-hidden="true">18.</strong> Upgrade</a></li><li class="chapter-item expanded affix "><li class="part-title">Compatibility</li><li class="chapter-item expanded "><a href="../compatibility/eligible_devices.html"><strong aria-hidden="true">19.</strong> Eligible Devices</a></li><li class="chapter-item expanded "><a href="../compatibility/software_development.html"><strong aria-hidden="true">20.</strong> Software Development</a></li><li class="chapter-item expanded "><a href="../compatibility/knowissues_limitations.html"><strong aria-hidden="true">21.</strong> Known Issue &amp; Limitations</a></li><li class="chapter-item expanded affix "><li class="part-title">Tech Notes</li><li class="chapter-item expanded "><a href="../tech_notes/modbus_master.html"><strong aria-hidden="true">22.</strong> Modbus Master Specification</a></li><li class="chapter-item expanded "><a href="../tech_notes/ota_software_upgrade.html"><strong aria-hidden="true">23.</strong> OTA Software Upgrade</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">ThingsPro Edge - User&#x27;s Manual</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="system-settings"><a class="header" href="#system-settings">System Settings</a></h1>
+<h2 id="configuring-the-ip-addresses-of-interfaces"><a class="header" href="#configuring-the-ip-addresses-of-interfaces">Configuring the IP Addresses of Interfaces</a></h2>
+<p>Go to <strong>System Settings &gt; IP Address</strong> to view and configure the IP addresses of the Ethernet and Wi-Fi interfaces. LAN1 can be configured both as a WAN and LAN interface. </p>
+<p><img src="./assets/clip_image008-1604263959074.png" alt="img" /> </p>
+<ul>
+<li>LAN1 can be a WAN interface with the DHCP client enabled by default. </li>
+<li>LAN2 uses static IP by default: 
+<ul>
+<li>IP Address : 192.168.4.127 </li>
+<li>Subnet Mask: 255.255.255.0 </li>
+</ul>
+</li>
+</ul>
+<h2 id="configuring-cellular-settings"><a class="header" href="#configuring-cellular-settings">Configuring Cellular Settings</a></h2>
+<p>Go to <strong>System Settings &gt; Cellular</strong> to view the current cellular settings. You can enable/disable cellular connectivity on your device, create profiles and manage <strong>Profile Settings</strong>, and enable/disable the connection <strong>Keep-alive</strong> function to optimize the cellular connection.</p>
+<p><img src="./assets/clip_image010.png" alt="img" /> </p>
+<p>You can create customized cellular profiles by choosing the <strong>Manual</strong> option in the <strong>Profile Settings</strong> section. A list of all the profiles in the system is displayed. <strong>Create</strong>, <strong>Edit</strong>, or <strong>Delete</strong> cellular profiles here.</p>
+<p>To create a new cellular connection profile, do the following:</p>
+<ol>
+<li>Click <strong>+ CREATE</strong>.</li>
+<li>Specify a unique <strong>Profile Name</strong>.</li>
+<li>Specify the target <strong>SIM</strong> card.</li>
+<li>Enter the <strong>PIN Code</strong>, if your SIM card requires it.
+<strong>NOTE:</strong> Three wrong attempts will lock the SIM card.</li>
+<li>Choose a <strong>Carrier</strong>. (<strong>NOTE:</strong> This option is displayed only if the cellular module supports carrier switching.)</li>
+<li>Refer to instructions from your cellular carrier to select <strong>Static</strong> or <strong>Dynamic</strong> APN and configure the corresponding settings.</li>
+</ol>
+<p><img src="./assets/clip_image012.png" alt="img" /> </p>
+<ol start="7">
+<li>Click <strong>DONE</strong>.</li>
+<li>On the <strong>Cellular</strong> setting page, click <strong>SAVE</strong>.</li>
+</ol>
+<p>When you click <strong>SAVE</strong> on the Cellular section, the module is restarted to apply the changes. The settings will take effect after the cellular module is successfully initialized. </p>
+<p>The <strong>Keep-alive</strong> function will help you maintain the connection between your device and the carrier service by pinging a specific host on the Internet at periodic intervals. </p>
+<p>In some circumstances, a system reboot might bring an unstable or malfunctioning device back to normal state. To enable automatic system reboot, select the <strong>Reboot the unit when ping to the target host failed continuously for a certain amount of time</strong> option and specify a reboot interval.</p>
+<p><img src="./assets/clip_image014.png" alt="img" /> </p>
+<p>Go to <strong>Network Overview &gt; WAN</strong> if you want to check the cellular network's connection status afterward.</p>
+<p><img src="./assets/Network_Overview-Cellular_Connecting.PNG" alt="Network Overview :: WAN :: Cellular Status" /></p>
+<h2 id="configuring-the-httphttps-service"><a class="header" href="#configuring-the-httphttps-service">Configuring the HTTP/HTTPS Service</a></h2>
+<p>Go to <strong>System Settings &gt; HTTP/HTTPS</strong> to enable/ disable the HTTP and HTTPS service on ThingsPro Edge for specific ports. The default ports for HTTP and HTTPS are 80 and 8443 respectively. </p>
+<p><img src="./assets/clip_image016.png" alt="img" /> </p>
+<p>You can import a trusted SSL certificate (with private key) to ensure secure access to ThingsPro Edge. </p>
+<h2 id="configuring-serial-ports"><a class="header" href="#configuring-serial-ports">Configuring Serial Ports</a></h2>
+<p>Go to <strong>Systems Settings &gt; Serial</strong> to view all the serial ports, change the settings, and to clone a serial port. </p>
+<p>To change the settings of a serial port, click the <img src="./assets/clip_image018.png" alt="img" /> icon. 
+You can modify the <strong>Baud Rate</strong>, <strong>Parity</strong>, <strong>Data Bits</strong>, <strong>Stop Bits</strong>, and <strong>Flow Control</strong>, or specify an <strong>Alias</strong> and assign an interface. </p>
+<p><img src="./assets/clip_image020.png" alt="img" /> </p>
+<p>The settings of one serial port can be cloned and applied to other serial ports using <strong>SAVE &amp; CLONE</strong>. </p>
+<p><img src="./assets/clip_image022.png" alt="img" /> </p>
+<h2 id="configuring-the-dhcp-server"><a class="header" href="#configuring-the-dhcp-server">Configuring the DHCP Server</a></h2>
+<p>Go to <strong>System Settings &gt; DHCP Server</strong> to view the DHCP settings. 
+<strong>NOTE</strong> The DHCP service is only available on LAN and static IP interfaces.</p>
+<p><img src="./assets/clip_image024.png" alt="img" /> </p>
+<h2 id="configuring-wi-fi"><a class="header" href="#configuring-wi-fi">Configuring Wi-Fi</a></h2>
+<p>Go to <strong>System Settings &gt; Wi-Fi</strong> to enable/disable the Wi-Fi interface for <strong>Client</strong> or <strong>AP</strong> mode.</p>
+<p><img src="./assets/clip_image026.png" alt="img" /></p>
+<p>To configure a Wi-Fi client, you need to connect to an access point (AP). To add an AP, click <strong>+ CREATE</strong> and select <strong>Create by SSID</strong> or <strong>Created by Scan Results</strong>.</p>
+<p><img src="./assets/clip_image028.png" alt="img" /> <img src="./assets/clip_image030.png" alt="img" /> </p>
+<p>The <strong>Check-alive</strong> function can be used to ensure Internet connectivity for the development. You can specify a target host and ping interval (sec). </p>
+<p>To configure a Wi-Fi AP mode, do the following:</p>
+<ol>
+<li>Specify an <strong>SSID</strong>.
+You can also choose to broadcast the SSID.</li>
+<li>Specify a password for the connection.</li>
+<li>Select a Wi-Fi band.</li>
+<li>Select a region and channel.</li>
+<li>Click <strong>SAVE</strong>.</li>
+</ol>
+<p><img src="./assets/clip_image032.png" alt="img" /></p>
+<p>To configure Wi-Fi IP address, go to <strong>System Settings</strong> &gt; <strong>IP Address</strong> &gt; <strong>Wi-Fi</strong>. </p>
+<p>To enable DHCP Server service for the Wi-Fi AP mode, go to <strong>System Settings</strong> &gt; <strong>DHCP Server</strong> &gt; <strong>Wi-Fi</strong>.</p>
+<p>Go to <strong>Network Overview &gt; WAN</strong> to check the Wi-Fi network's connection status afterward.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../device_configuration/general_settings.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../device_configuration/import_export.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../device_configuration/general_settings.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../device_configuration/import_export.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>User Management - ThingsPro Edge - User&#x27;s Manual</title>
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../overview/what-is-TPE.html"><strong aria-hidden="true">1.</strong> What is ThingsPro Edge?</a></li><li class="chapter-item expanded "><a href="../overview/what-is-TPP.html"><strong aria-hidden="true">2.</strong> What is ThingsPro Proxy?</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../quick_started/initial_configuration.html"><strong aria-hidden="true">3.</strong> Initial Configuration</a></li><li class="chapter-item expanded "><a href="../quick_started/installation.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Northbound Services</li><li class="chapter-item expanded "><a href="../northbound/mqtt_client.html"><strong aria-hidden="true">5.</strong> MQTT Client</a></li><li class="chapter-item expanded "><a href="../northbound/sparkplugB.html"><strong aria-hidden="true">6.</strong> Sparkplug B.</a></li><li class="chapter-item expanded "><a href="../northbound/aid.html"><strong aria-hidden="true">7.</strong> Azure IoT Device</a></li><li class="chapter-item expanded "><a href="../northbound/aie.html"><strong aria-hidden="true">8.</strong> Azure IoT Edge</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../northbound/azure-iotedge/ta.html"><strong aria-hidden="true">8.1.</strong> ThingsPro Agent</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../northbound/azure-iotedge/ta_twin.html"><strong aria-hidden="true">8.1.1.</strong> Module Twin</a></li><li class="chapter-item expanded "><a href="../northbound/azure-iotedge/ta_command.html"><strong aria-hidden="true">8.1.2.</strong> Direct Method</a></li></ol></li><li class="chapter-item expanded "><a href="../northbound/azure-iotedge/module.html"><strong aria-hidden="true">8.2.</strong> Module Development</a></li></ol></li><li class="chapter-item expanded "><a href="../northbound/aws_iot_core.html"><strong aria-hidden="true">9.</strong> AWS IoT Core</a></li><li class="chapter-item expanded affix "><li class="part-title">Southbound Services</li><li class="chapter-item expanded "><a href="../southbound_services/modbus.html"><strong aria-hidden="true">10.</strong> Modbus</a></li><li class="chapter-item expanded "><a href="../southbound_services/opcua.html"><strong aria-hidden="true">11.</strong> OPC UA Server </a></li><li class="chapter-item expanded affix "><li class="part-title">Device Configuration</li><li class="chapter-item expanded "><a href="../device_configuration/dashboard.html"><strong aria-hidden="true">12.</strong> Dashboard</a></li><li class="chapter-item expanded "><a href="../device_configuration/general_settings.html"><strong aria-hidden="true">13.</strong> General Settings</a></li><li class="chapter-item expanded "><a href="../device_configuration/system_settings.html"><strong aria-hidden="true">14.</strong> System Settings</a></li><li class="chapter-item expanded "><a href="../device_configuration/import_export.html"><strong aria-hidden="true">15.</strong> Import/ Export</a></li><li class="chapter-item expanded "><a href="../device_configuration/sys_event_logs.html"><strong aria-hidden="true">16.</strong> System/ Event Logs</a></li><li class="chapter-item expanded affix "><li class="part-title">Security</li><li class="chapter-item expanded "><a href="../security/user_management.html" class="active"><strong aria-hidden="true">17.</strong> User Management</a></li><li class="chapter-item expanded "><a href="../security/upgrade.html"><strong aria-hidden="true">18.</strong> Upgrade</a></li><li class="chapter-item expanded affix "><li class="part-title">Compatibility</li><li class="chapter-item expanded "><a href="../compatibility/eligible_devices.html"><strong aria-hidden="true">19.</strong> Eligible Devices</a></li><li class="chapter-item expanded "><a href="../compatibility/software_development.html"><strong aria-hidden="true">20.</strong> Software Development</a></li><li class="chapter-item expanded "><a href="../compatibility/knowissues_limitations.html"><strong aria-hidden="true">21.</strong> Known Issue &amp; Limitations</a></li><li class="chapter-item expanded affix "><li class="part-title">Tech Notes</li><li class="chapter-item expanded "><a href="../tech_notes/modbus_master.html"><strong aria-hidden="true">22.</strong> Modbus Master Specification</a></li><li class="chapter-item expanded "><a href="../tech_notes/ota_software_upgrade.html"><strong aria-hidden="true">23.</strong> OTA Software Upgrade</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">ThingsPro Edge - User&#x27;s Manual</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="user-management"><a class="header" href="#user-management">User Management</a></h1>
+<p>You can maintain ThingsPro Edge user accounts and assign a role with specific permissions to each account. These functions allow you to track and control who accesses this system via ThingsPro Edge Web GUI and API and manage the permissions.</p>
+<h2 id="users"><a class="header" href="#users">Users</a></h2>
+<p>You can <strong>View</strong>, <strong>Create</strong>, <strong>Edit</strong>, <strong>Deactivate</strong>, and <strong>Delete</strong> ThingsPro Edge user accounts. In the main menu, go to <strong>Security &gt; User Management &gt; Users</strong> to manage user accounts.</p>
+<p><img src="./assets/Users-List.PNG" alt="Users-List" /></p>
+<p><strong>Creating a New User Account</strong></p>
+<p>Click on the <img src="./assets/Users-Create_Button.PNG" alt="Users-Create_Button" /> to create a new user account. In the dialogue box that is displayed, fill up the fields and click <strong>SUBMIT</strong>.</p>
+<p><strong>NOTE:</strong> We recommend that you specify a strong password that is at least eight characters long consisting of at least one number and at least one special character.</p>
+<table><thead><tr><th align="center">Password Policy</th><th align="center">Valid Password</th></tr></thead><tbody>
+<tr><td align="center"><img src="./assets/Users-Create_New_Account.png" alt="Users-Create_New_Account" /></td><td align="center"><img src="./assets/Users-Create_New_Account-Good_Password.png" alt="Users-Create_New_Account-Good_Password" /></td></tr>
+</tbody></table>
+<p><strong>Managing Existing User Accounts</strong></p>
+<p>To manage an account, click on the pop-up menu icon (<img src="./assets/PopUp_Menu_Icon.PNG" alt="PopUp_Menu_Icon" />) for the account.</p>
+<p><img src="./assets/Users-Manage_Accounts.PNG" alt="Users-Manage_Accounts" /></p>
+<table><thead><tr><th align="center">Function</th><th>Description</th></tr></thead><tbody>
+<tr><td align="center">Edit</td><td>Change the role, email, or password of an existing account.</td></tr>
+<tr><td align="center">Deactivate</td><td>Disallow the user from loggin in to ThingsPro Edge.</td></tr>
+<tr><td align="center">Delete</td><td>Delete the user accouont. <strong>NOTE:</strong> This operation is irreversible.</td></tr>
+</tbody></table>
+<p><strong>NOTE:</strong> You cannot <strong>Deactivate</strong> or <strong>Delete</strong> the last remaining account with an Administrator role. This is to prevent  an unauthorized account from fully managing this system. When the system detects only one active account with the Administrator role is selected, all items in the pop-up menu will be greyed-out.</p>
+<h2 id="user-roles"><a class="header" href="#user-roles">User Roles</a></h2>
+<p>You can <strong>View</strong>, <strong>Create</strong>, <strong>Edit</strong>, and <strong>Delete</strong> user roles in ThingsPro Edge. In the main menu, go to <strong>Security &gt; User Management &gt; Roles</strong> to manage the user roles.</p>
+<p><img src="./assets/Roles-List.PNG" alt="Roles-List" /></p>
+<p>Click on the <img src="./assets/Roles-Create_Button.PNG" alt="Roles-Create_Button" /> to create a new user account. Specify a unique name to the role and assign appropriate permissions. When you are done, click on the button &quot;<strong>SUBMIT</strong>&quot; to create the role in the system.</p>
+<p><img src="./assets/Roles-Create_New_Role.PNG" alt="Roles-Create_New_Role" /></p>
+<p>You can <strong>Edit</strong> the settings or <strong>Delete</strong> an existing role by clicking on the pop-up menu icon (<img src="./assets/PopUp_Menu_Icon.PNG" alt="PopUp_Menu_Icon" />) next to the role.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../device_configuration/sys_event_logs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../security/upgrade.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../device_configuration/sys_event_logs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../security/upgrade.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

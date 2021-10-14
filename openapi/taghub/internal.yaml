@@ -1,0 +1,777 @@
+openapi: 3.0.0
+tags:
+  - name: tag
+  - name: monitor
+  - name: access
+  - name: virtual
+info:
+  description: TagService and TagHub API
+  version: "2.1.0"
+  title: Tag APIs
+servers:
+  - url: 'http://127.0.0.1/api/v1'
+security:
+  - bearerAuth: []
+paths:
+  /tags/list:
+    parameters:
+      - name: provider
+        description: >-
+          return tag list by a specific provider name
+        in: query
+        schema:
+          type: string
+    get:
+      tags:
+        - tag
+      summary: Get the list of all tags
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tag-list'
+              examples:
+                modbusmaster:
+                  $ref: '#/components/examples/modbusmasterTagList'
+                system:
+                  $ref: '#/components/examples/systemTagList'
+  /tags/providers:
+    get:
+      tags:
+        - tag
+      summary: View all current tag providers
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protocol-list'
+              examples:
+                protocols:
+                  $ref: '#/components/examples/protocolList'
+  /tags/monitor/enable:
+    post:
+      tags:
+        - monitor
+      description: Enable taghub to start monitoring particular tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tags-monitor-apply'
+      responses:
+        '200':
+          description: response
+  /tags/monitor/disable:
+    post:
+      tags:
+        - monitor
+      description: Disable taghub to stop monitoring particular tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tags-monitor-apply'
+      responses:
+        '200':
+          description: response
+  /tags/_/monitored:
+    get:
+      tags:
+        - monitor
+      description: List monitored tags
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      additionalProperties:
+                        type: array
+                        items:
+                          type: string
+              examples:
+                monitored:
+                  value:
+                    data:
+                      system:
+                        status:
+                          - cpuUsage
+                          - memoryUsage
+                      modbus_tcp_master:
+                        ioLogik:
+                          - di0
+                          - di1
+    delete:
+      tags:
+        - monitor
+      description: Remove monitored tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string
+            examples:
+              desired:
+                value:
+                  system:
+                    status:
+                      - cpuUsage
+      responses:
+        '200':
+          description: ok
+    put:
+      tags:
+        - monitor
+      description: Update monitored tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string
+            examples:
+              desired:
+                value:
+                  system:
+                    status:
+                      - cpuUsage
+                      - memoryUsage
+                  modbus_tcp_master:
+                    ioLogik:
+                      - di0
+                      - di1
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              examples:
+                monitored:
+                  value:
+                    data:
+                      system:
+                        status:
+                          - cpuUsage
+                          - memoryUsage
+                      modbus_tcp_master:
+                        ioLogik:
+                          - di0
+                          - di1
+  /tags/monitor/{provider}/{source}:
+    parameters:
+      - name: provider
+        in: path
+        required: true
+        description: 'Provider Name - (system, module name, app name)'
+        schema:
+          type: string
+      - name: source
+        in: path
+        required: true
+        description: 'Source Name - (device name, function name)'
+        schema:
+          type: string
+      - name: tags
+        in: query
+        description: 'Tag Name - format (tags=name1,name2,name3)'
+        schema:
+          type: string
+      - name: ms
+        in: query
+        description: history data search in milliseconds
+        schema:
+          type: integer
+      - name: streamInterval
+        in: query
+        description: >-
+          create a http streaming connection and response data by milliseconds
+          time interval
+        schema:
+          type: integer
+      - name: compute
+        in: query
+        description: apply a compute method during streaming
+        schema:
+          type: string
+          enum:
+            - diff
+      - name: onChanged
+        in: query
+        description: >-
+          create a http streaming connection and response data by tag changed
+        schema:
+          type: boolean
+    get:
+      tags:
+        - monitor
+      description: >-
+        Returns value of tags in taghub which queried by different sources and
+        time
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/tags-monitor'
+              examples:
+                modbus_tcp_master:
+                  $ref: '#/components/examples/tags-monitor'
+  /tags/persistence:
+    put:
+      tags:
+        - monitor
+      description: Update taghub persistence policy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/persistence-policy'
+            examples:
+              persistence mode:
+                $ref: '#/components/examples/persistence-ttl'
+              cache mode:
+                $ref: '#/components/examples/persistence-cache'
+      responses:
+        '200':
+          description: Restart taghub daemon successfully
+        '400':
+          description: Incorrect schema of requestBody
+  /tags/access/{provider}/{source}/{tag}:
+    parameters:
+      - name: provider
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: source
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: tag
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+        - access
+      summary: Direct read method by tag
+      description: 'Only ''r'', ''rw'' access type can work.'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tags-access-response'
+        '400':
+          description: Failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tags-access-error'
+    put:
+      tags:
+        - access
+      summary: Direct write method by tag
+      description: 'Only ''w'', ''rw'' access type can work.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tags-access'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tags-access-error'
+                
+  /tags/virtual:
+    post:
+      tags:
+        - virtual
+      summary: Create an user-defined virtual tag
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tag'
+            examples:
+              int:
+                $ref: '#/components/examples/virtual-tag-int64'
+              uint:
+                $ref: '#/components/examples/virtual-tag-uint64'
+              float:
+                $ref: '#/components/examples/virtual-tag-float'
+              double:
+                $ref: '#/components/examples/virtual-tag-double'
+              string:
+                $ref: '#/components/examples/virtual-tag-string'
+              byte-array:
+                $ref: '#/components/examples/virtual-tag-byte-array'
+              write:
+                $ref: '#/components/examples/virtual-tag-write'
+              read-write:
+                $ref: '#/components/examples/virtual-tag-rw'
+      responses:
+        '200':
+          description: The request has succeeded
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/tag'
+              examples:
+                response:
+                  $ref: '#/components/examples/virtual-tag-response'
+    put:
+      tags:
+        - virtual
+      summary: Update an user-defined virtual tag
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tag'
+            examples:
+              int:
+                $ref: '#/components/examples/virtual-tag-int64'
+              uint:
+                $ref: '#/components/examples/virtual-tag-uint64'
+              float:
+                $ref: '#/components/examples/virtual-tag-float'
+              double:
+                $ref: '#/components/examples/virtual-tag-double'
+              string:
+                $ref: '#/components/examples/virtual-tag-string'
+              byte-array:
+                $ref: '#/components/examples/virtual-tag-byte-array'
+              raw:
+                $ref: '#/components/examples/virtual-tag-byte-array'
+              write:
+                $ref: '#/components/examples/virtual-tag-write'
+              read-write:
+                $ref: '#/components/examples/virtual-tag-rw'
+      responses:
+        '200':
+          description: Update virtual tag successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/tag'
+              examples:
+                response:
+                  $ref: '#/components/examples/virtual-tag-response'
+    delete:
+      tags:
+        - virtual
+      summary: Delete an user-defined virtual tag
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tag'
+            examples:
+              int:
+                $ref: '#/components/examples/virtual-tag-int64'
+              uint:
+                $ref: '#/components/examples/virtual-tag-uint64'
+              float:
+                $ref: '#/components/examples/virtual-tag-float'
+              double:
+                $ref: '#/components/examples/virtual-tag-double'
+              string:
+                $ref: '#/components/examples/virtual-tag-string'
+              byte-array:
+                $ref: '#/components/examples/virtual-tag-byte-array'
+              write:
+                $ref: '#/components/examples/virtual-tag-write'
+              read-write:
+                $ref: '#/components/examples/virtual-tag-rw'
+      responses:
+        '200':
+          description: Delete virtual tag successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/tag'
+              examples:
+                response:
+                  $ref: '#/components/examples/virtual-tag-response'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    persistence-policy:
+      type: object
+      required:
+        - mode
+        - expirationTime
+      properties:
+        mode:
+          type: string
+          enum:
+            - persistence
+            - cache
+          description: |
+            In persistence mode, taghub will keep data within the given time. 
+            In cache mode, taghub will keep the last the give number.
+        expirationTime:
+          type: integer
+          minimum: 60
+          maximum: 86400
+          description: |
+            In persistence mode, taghub will keep data within the given time in second.
+            In cache mode, expirationTime will be ignored.
+    tag:
+      type: object
+      properties:
+        prvdName:
+          type: string
+        srcName:
+          type: string
+        tagName:
+          type: string
+        dataType:
+          type: string
+          enum:
+            - uint8
+            - uint16
+            - uint32
+            - uint64
+            - int8
+            - int16
+            - int32
+            - int64
+            - float
+            - double
+            - string
+            - boolean
+            - byte-array
+            - raw
+        dataSize:
+          type: integer
+          format: int32
+        duration:
+          type: integer
+          format: int32
+        dataUnit:
+          type: string
+        access:
+          type: string
+          enum:
+            - r
+            - w
+            - rw
+    tag-list:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/tag'
+    protocol-list:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: string
+    tags-monitor:
+      type: array
+      items:
+        type: object
+        properties:
+          prvdName:
+            type: string
+            description: provider name (system, virtual, modules name)
+          srcName:
+            type: string
+            description: source name (device, function name)
+          tagName:
+            type: string
+            description: tag name
+          ts:
+            type: integer
+            format: int64
+            description: the abbreviation of timestamp (microsecond)
+          dataType:
+            type: string
+            enum:
+            - uint8
+            - uint16
+            - uint32
+            - uint64
+            - int8
+            - int16
+            - int32
+            - int64
+            - float32
+            - float64
+            - string
+            - boolean
+            - byte-array
+            - raw
+          dataValue:
+            type: object
+          dataUnit:
+            type: string
+    tags-monitor-apply:
+      type: object
+      properties:
+        id:
+          type: string
+        list:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
+      example:
+        id: thingspro-agent
+        list:
+          system:
+            route:
+              - networkUsage
+              - networkTx
+              - networkRx
+          modbus_tcp_master:
+            ioLogik:
+              - di0
+              - di1
+              - di2
+    tags-access:
+      type: object
+      properties:
+        dataType:
+          type: string
+          example: int16
+        dataValue:
+          type: object
+          example: 1
+    tags-access-response:
+      type: object
+      properties:
+        prvdName:
+          type: string
+          example: modbus_tcp_master
+        srcName:
+          type: string
+          example: ioLogik
+        tagName:
+          type: string
+          example: di0
+        timestamp:
+          type: string
+          example: '1560322153374'
+        dataType:
+          type: string
+          example: uint16
+        dataValue:
+          type: object
+          example: 1
+    tags-access-error:
+      type: object
+      properties:
+        message:
+          type: string
+  examples:
+    tags-monitor:
+      value:
+        data:
+          prvdName: modbus_tcp_master
+          srcName: ioLogik-E1210
+          tagName: di0
+          dataType: uint16
+          dataValue: 1
+          dataUnit: mA
+          ts: 1541409957933
+    systemTagList:
+      value:
+        data:
+          - prvdName: system
+            srcName: cpu
+            tagName: usage
+            dataType: int32
+            dataSize: 1
+            dataUnit: '%'
+            access: r
+    modbusmasterTagList:
+      value:
+        data:
+          - prvdName: modbus_tcp_master
+            srcName: ioLogik
+            tagName: di0
+            dataType: byte-array
+            dataSize: 20
+            dataUnit: 'mA'
+            access: r
+    protocolList:
+      value:
+        data:
+          - system
+          - virtual
+          - modbus_tcp_master
+          - modbus_rtu_master
+          - opc-ua-server
+    persistence-ttl:
+      value:
+        mode: persistence
+        expirationTime: 60
+    persistence-cache:
+      value:
+        mode: cache
+        expirationTime: 60
+    virtual-tag-int64:
+      value:
+        prvdName: virtual
+        srcName: user
+        tagName: int64_t
+        dataType: int64
+        dataSize: 1
+        duration: 1000
+        dataUnit: "unit"
+        access: r
+    virtual-tag-uint64:
+      value:
+        prvdName: virtual
+        srcName: user
+        tagName: uint64_t
+        dataType: uint64
+        dataSize: 1
+        duration: 1000
+        dataUnit: "unit"
+        access: r
+    virtual-tag-float:
+      value:
+        prvdName: virtual
+        srcName: user
+        tagName: float_t
+        dataType: float
+        dataSize: 1
+        duration: 1000
+        dataUnit: "unit"
+        access: r
+    virtual-tag-double:
+      value:
+        prvdName: virtual
+        srcName: user
+        tagName: double_t
+        dataType: double
+        dataSize: 1
+        duration: 1000
+        dataUnit: "unit"
+        access: r
+    virtual-tag-string:
+      value:
+        prvdName: virtual
+        srcName: user
+        tagName: string_t
+        dataType: string
+        dataSize: 1
+        duration: 1000
+        dataUnit: "unit"
+        access: r
+    virtual-tag-byte-array:
+      value:
+        prvdName: virtual
+        srcName: user
+        tagName: byte-array_t
+        dataType: byte-array
+        dataSize: 1
+        duration: 1000
+        dataUnit: "unit"
+        access: r
+    virtual-tag-raw:
+      value:
+        prvdName: virtual
+        srcName: user
+        tagName: raw_t
+        dataType: raw
+        dataSize: 1
+        duration: 1000
+        dataUnit: "unit"
+        access: r
+    virtual-tag-write:
+      value:
+        prvdName: virtual
+        srcName: user
+        tagName: write
+        dataType: int64
+        dataSize: 1
+        duration: 1000
+        dataUnit: "unit"
+        access: w
+    virtual-tag-rw:
+      value:
+        prvdName: virtual
+        srcName: user
+        tagName: read_write
+        dataType: int64
+        dataSize: 1
+        duration: 1000
+        dataUnit: "unit"
+        access: rw
+    virtual-tag-response:
+      value:
+        data:
+          prvdName: virtual
+          srcName: user
+          tagName: int64_t
+          dataType: int64
+          dataSize: 1
+          duration: 1000
+          dataUnit: "unit"
+          access: r
+    customize-general-tag:
+      value:
+        prvdName: virtual
+        srcName: user
+        tagName: define
+        dataType: "string"
+        status: ""
+        startMethod:
+          method: oapi
+          oapi:
+            endpoint: "device/general"
+            jq: ".data | select(.tagName == \"macAddress\")"
+        startMode:
+          mode: period
+          period: 1

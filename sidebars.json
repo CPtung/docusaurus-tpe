@@ -1,0 +1,12 @@
+{
+    "docs": {
+      "Introduction": [
+        "intro/what-is-TPE",
+        "intro/what-is-TPP"
+      ],
+      "Get Started": [
+        "get-started/installation",
+        "get-started/initial_configuration"
+      ]
+    }
+  }

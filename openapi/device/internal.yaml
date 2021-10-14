@@ -1,0 +1,593 @@
+openapi: '3.0.0'
+
+x-tagGroups:
+  - name: Device Configuration API
+    tags:
+      - general
+      - time
+      - zoneinfo
+      - dns
+      - route
+      - network
+      - ethernets
+      - serials
+      - cellulars
+      - gps
+      - wifi
+      - iptables
+      - minicards
+      - dhcpservers
+
+info:
+  version: '1.0.0'
+  title: 'Device Configuration APIs'
+  description: 'Device Configuration APIs'
+
+servers:
+  - url: http://127.0.0.1:59001/api/vi
+
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+  schemas:
+    GeneralInformation:
+      title: Device general configuration
+      properties:
+        type:
+          type: string
+          description: Interface type.
+          example: general
+          readOnly: true
+        deviceName:
+          type: string
+          description: device display name.
+          example: MyThingsproEdge
+        hostName:
+          type: string
+          description: device hostname.
+          example: Moxa
+        firmwareVersion:
+          type: string
+          description: device firmware version.
+          readOnly: true
+        lastRebootTime:
+          type: string
+          description: device last reboot time.
+          readOnly: true
+        memorySize:
+          type: integer
+          description: device memory size(unit:byte).
+          readOnly: true
+        cpu:
+          type: string
+          description: device cpu information.
+          readOnly: true
+    AllEthernetInformation:
+      title: All ethernet interfaces configuration
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EthernetItem'
+        count:
+          type: integer
+          description: Array length.
+          example: 1
+    EthernetDhcp:
+      title: Ethernet setting for dynamic ip.
+      required:
+      - enableDhcp
+      - enable
+      - wan
+      properties:
+        id:
+          type: integer
+        enableDhcp:
+          type: boolean
+        enable:
+          type: boolean
+        wan:
+          type: boolean
+    EthernetStaticIP:
+      title: Ethernet setting for static ip.
+      required:
+      - ip
+      - gateway
+      - dns
+      - enableDhcp
+      - enable
+      - wan
+      properties:
+        id:
+          type: integer
+        ip:
+          type: string
+        gateway:
+          type: string
+        dns:
+          type: array
+          items:
+            type: string
+        enableDhcp:
+          type: boolean
+        enable:
+          type: boolean
+        wan:
+          type: boolean
+    EthernetInformation:
+      title: Ethernet interface configuration
+      properties:
+        data:
+          $ref: '#/components/schemas/EthernetItem'
+    EthernetItem:
+      title: Ethernet configuration
+      properties:
+        type:
+          type: string
+          description: Interface type.
+          example: ethernets
+          readOnly: true
+        id:
+          type: integer
+          description: Interface id.
+          example: 1
+          readOnly: true
+        displayName:
+          type: string
+          description: Interface display name.
+          readOnly: true
+          example: LAN 1
+        name:
+          type: string
+          description: Interface name.
+          readOnly: true
+          example: eth0
+        wan:
+          type: boolean
+          description: Enable/disable wan.
+          example: true
+        enable:
+          type: boolean
+          description: Enable/disable the interface. (enable=true doesn’t mean the interface is trying to connect if the interface belongs to Wi-Fi Client which the TCP/IP layer 2 behavior controlled by the other endpoints.)
+          example: true
+        status:
+          type: boolean
+          description: Interface current status.
+          readOnly: true
+          example: true
+        enableDhcp:
+          type: boolean
+          description: Enable/disable dhcp.
+          example: true
+        broadcast:
+          type: string
+          description: Interface broadcast.
+          readOnly: true
+          example: 10.144.51.254
+        dns:
+          type: array
+          description: Interface dns.
+          items:
+            type: string
+            example: ["10.128.8.5","10.128.8.8"]
+        gateway:
+          type: string
+          description: Interface gateway.
+          example: 10.144.51.254
+        ip:
+          type: string
+          description: Interface ip.
+          example: 10.144.51.254
+        netmask:
+          type: string
+          description: Interface netmask.
+          example: 10.144.51.254
+        mac:
+          type: string
+          description: Interface mac.
+          readOnly: true
+          example: 00:90:e8:70:a9:74
+        subnet:
+          type: string
+          description: Interface subnet.
+          readOnly: true
+          example: 192.168.3.0
+        speed:
+          type: string
+          description: Ethernet speed mode.
+          enum: [10MBps-Half, 10MBbps-Full, 100MBps-Half, 100MBps-Full]
+          example: 100MBps-Full
+        GratuitousArp:
+          type: object
+          description: Gratuitous ARP.
+          properties:
+            enable:
+              type: boolean
+              example: false
+            period:
+              type: integer
+              description: 'unit : Second.'
+              example: 3
+            arps:
+              type: array
+              items:
+                type: object
+                properties:
+                  mac:
+                    type: string
+                  ip:
+                    type: string
+    
+security:
+  - bearerAuth: []
+
+paths:
+  /device/general:
+    get:
+      description: Get device general configuration.
+      tags: ["device", "general"]
+      responses:
+        200:
+          description: Device general configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralInformation'
+              example:
+                type: general
+                deviceName: MyThingsProEdge
+                hostName: Moxa
+                modelName: UC-8112A-ME-T-LX-EU
+                firmwareVersion: 1.0
+                lastRebootTime: "2019-06-27T10:10:16+08:00"
+                memorySize: 1056120832
+                cpu: ARMv7 Processor rev 2 (v7l)
+    patch:
+      tags: ["device", "general"]
+      description: Update device general configuration.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                deviceName:
+                  type: string
+                  description: device display name.
+                  example: MyThingsproEdge
+                hostName:
+                  type: string
+                  description: device hostname.
+                  example: Moxa
+            examples:
+              update device display name:
+                value:
+                  deviceName: MyDevice
+              update device hostname:
+                value:
+                  hostName: MyHost
+      responses:
+        200:
+          description: Device general configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllEthernetInformation'
+              example:
+                type: general
+                deviceName: MyDevice
+                hostName: MyHost
+                modelName: UC-8112A-ME-T-LX-EU
+                firmwareVersion: 1.0
+                lastRebootTime: "2019-06-27T10:10:16+08:00"
+                memorySize: 1056120832
+                cpu: ARMv7 Processor rev 2 (v7l)
+  /device/time:
+    $ref: './module.d/time.yaml#/paths/~1device~1time'
+  /device/zoneinfo:
+    $ref: './module.d/time.yaml#/paths/~1device~1zoneinfo'
+  /device/dns:
+    $ref: './module.d/dns.yaml#/paths/~1device~1dns'
+  /device/route:
+    $ref: './module.d/route.yaml#/paths/~1device~1route'
+  /device/network/wan:
+    $ref: './module.d/route.yaml#/paths/~1device~1network~1wan'
+  /device/ethernets:
+    get:
+      description: Get ethernet interfaces configuration.
+      tags: ["device", "ethernets"]
+      responses:
+        200:
+          description: All ethernet interfaces configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllEthernetInformation'
+              example:
+                data:
+                  - subnet: 192.168.3.0
+                    type: ethernet
+                    mac: '00:90:e8:70:a9:74'
+                    netmask: 255.255.252.0
+                    ip: 10.144.49.164
+                    displayName: LAN 1
+                    gateway: 10.144.51.254
+                    broadcast: 10.144.51.255;
+                    dns:
+                      - 10.128.8.5
+                      - 10.128.8.8
+                    enableDhcp: true
+                    status: true
+                    id: 1
+                    name: eth0
+                    wan: true
+                    enable: true
+                count: 1
+    patch:
+      tags: ["device", "ethernets"]
+      description: Update ethernet interfaces configuration.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/EthernetDhcp'
+                  - $ref: '#/components/schemas/EthernetStaticIP'
+            example:
+              - id: 1
+                wan: true
+                enableDhcp: true
+                enable: true
+              - id: 2
+                enableDhcp: false
+                enable: true
+                wan: true
+                ip: 1.2.3.4
+                gateway: 5.6.7.8
+                dns:
+                  - 1.1.1.1
+                  - 1.1.1.2
+      responses:
+        200:
+          description: Device ethernet configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllEthernetInformation'
+              example:
+                data:
+                  - subnet: 1.1.1.1
+                    type: ethernets
+                    mac: '01:01:01:01:01:01'
+                    netmask: 255.255.255.255
+                    ip: 2.2.2.2
+                    displayName: LAN 1
+                    gateway: 3.3.3.3
+                    broadcast: 1.1.1.1
+                    dns:
+                      - 1.1.1.1
+                      - 1.1.1.2
+                    enableDhcp: true
+                    status: true
+                    id: 1
+                    name: eth0
+                    wan: true
+                    enable: true
+                  - subnet: 2.2.2.2
+                    type: ethernets
+                    mac: '02:02:02:02:02:02'
+                    netmask: 255.255.255.255
+                    ip: 3.3.3.3
+                    displayName: LAN 2
+                    gateway: 3.3.3.3
+                    broadcast: 1.1.1.1
+                    dns:
+                      - 1.1.1.1
+                      - 1.1.1.2
+                    enableDhcp: false
+                    status: true
+                    id: 1
+                    name: eth0
+                    wan: true
+                    enable: true
+                count: 2
+  /device/ethernets/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: Ethernet interface id.
+        schema:
+          type: integer
+        required: true
+        example: 1
+    get:
+      description: Get ethernet interface configuration.
+      tags: ["device", "ethernets"]
+      responses:
+        200:
+          description: Ethernet interface configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EthernetInformation'
+              example:
+                data:
+                  subnet: 192.168.3.0
+                  type: ethernet
+                  mac: '00:90:e8:70:a9:74'
+                  netmask: 255.255.252.0
+                  ip: 10.144.49.164
+                  displayName: LAN 1
+                  gateway: 10.144.51.254
+                  broadcast: 10.144.51.255;
+                  dns:
+                    - 10.128.8.5
+                    - 10.128.8.8
+                  enableDhcp: true
+                  status: true
+                  id: 1
+                  name: eth0
+                  wan: true
+                  enable: true
+    patch:
+      description: Update ethernet interface configuration.
+      tags: ["device", "ethernets"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/EthernetDhcp'
+                - $ref: '#/components/schemas/EthernetStaticIP'
+            examples:
+              dhcp:
+                value:
+                  wan: true
+                  enableDhcp: true
+                  enable: true
+              static:
+                value:
+                  enableDhcp: false
+                  enable: true
+                  wan: true
+                  ip: 1.2.3.4
+                  gateway: 5.6.7.8
+                  dns:
+                    - 1.1.1.1
+                    - 1.1.1.2
+      responses:
+        200:
+          description: Ethernet interface configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EthernetInformation'
+              example:
+                data:
+                  subnet: 192.168.3.0
+                  type: ethernet
+                  mac: '00:90:e8:70:a9:74'
+                  netmask: 255.255.252.0
+                  ip: 10.144.49.164
+                  displayName: LAN 1
+                  gateway: 10.144.51.254
+                  broadcast: 10.144.51.255;
+                  dns:
+                    - 10.128.8.5
+                    - 10.128.8.8
+                  enableDhcp: true
+                  status: true
+                  id: 1
+                  name: eth0
+                  wan: true
+                  enable: true
+  /device/serials:
+    $ref: './module.d/serials.yaml#/paths/~1device~1serials'
+  /device/serials/{id}:
+    $ref: './module.d/serials.yaml#/paths/~1device~1serials~1{id}'
+  /device/cellulars:
+    $ref: './module.d/cellular.yaml#/paths/~1device~1cellulars'
+  /device/cellulars/{id}:
+    $ref: './module.d/cellular.yaml#/paths/~1device~1cellulars~1{id}'
+  /device/gps:
+    $ref: './module.d/gps.yaml#/paths/~1device~1gps'
+  /device/gps/{id}:
+    $ref: './module.d/gps.yaml#/paths/~1device~1gps~1{id}'
+  /device/wifi:
+    $ref: './module.d/wifi.yaml#/paths/~1device~1_~1wifi'
+  /device/wifi/{id}:
+    $ref: './module.d/wifi.yaml#/paths/~1device~1_~1wifi~1{id}'
+  /device/wifi/{id}/client/networks:
+    $ref: './module.d/wifi.yaml#/paths/~1device~1wifi~1{id}~1client~1networks'
+  /device/wifi/{id}/client/networks/{uuid}:
+    $ref: './module.d/wifi.yaml#/paths/~1device~1wifi~1{id}~1client~1networks~1{uuid}'
+  /device/wifi/{id}/client/priority:
+    $ref: './module.d/wifi.yaml#/paths/~1device~1wifi~1{id}~1client~1priority'
+  /device/wifi/{id}/client/scan:
+    $ref: './module.d/wifi.yaml#/paths/~1device~1wifi~1{id}~1client~1scan'
+  /device/minicards:
+    $ref: './module.d/minicards.yaml#/paths/~1device~1minicards'
+  /device/minicards/{id}:
+    $ref: './module.d/minicards.yaml#/paths/~1device~1minicards~1{id}'
+  /device/dhcpservers:
+    $ref: './module.d/dhcpservers.yaml#/paths/~1device~1dhcpservers'
+  /device/dhcpservers/{id}:
+    $ref: './module.d/dhcpservers.yaml#/paths/~1device~1dhcpservers~1{id}'
+  /device/firewall/outbounds:
+    $ref: './module.d/firewall.yaml#/paths/~1device~1firewall~1outbounds'
+
+externalDocs:
+  url: '#'
+  x-mocks:
+    AllWifiInformation:
+      {
+        "data" : [
+          {
+            "id": 1,
+            "name": "wlan0",
+            "type": "wifi",
+            "product": "WPEQ-353ACNI",
+            "capabilities": ["client", "ap"],
+            "mode": "client",
+            "enable": false,
+            "client": {
+              "enableDhcp": true,
+              "networks": [],
+              "checkalive": {
+                "enable": false,
+                "targetHost": "8.8.8.8",
+                "intervalSec": 60
+              }
+            },
+            "ap": {
+              "mode": "bg",
+              "ssid": "moxa-test1",
+              "channel": 11,
+              "security": {
+                "mode": "none"
+              },
+              "ip": "192.168.5.127",
+              "netmask": "255.255.255.0"
+            }
+          }
+        ],
+        "count" : 1
+      }
+    WifiInformation:
+      {
+        "data" : {
+          "id": 1,
+          "name": "wlan0",
+          "type": "wifi",
+          "product": "WPEQ-353ACNI",
+          "capabilities": ["client", "ap"],
+          "mode": "client",
+          "enable": false,
+          "client": {
+            "enableDhcp": true,
+            "networks": [],
+            "checkalive": {
+              "enable": false,
+              "targetHost": "8.8.8.8",
+              "intervalSec": 60
+            }
+          },
+          "ap": {
+            "mode": "bg",
+            "ssid": "moxa-test1",
+            "channel": 11,
+            "security": {
+              "mode": "none"
+            },
+            "ip": "192.168.5.127",
+            "netmask": "255.255.255.0"
+          }
+        }
+      }

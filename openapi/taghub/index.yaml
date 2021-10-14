@@ -1,0 +1,320 @@
+openapi: 3.0.0
+tags:
+  - name: tag
+  - name: monitor
+  - name: access
+info:
+  description: TagService and TagHub API
+  version: "2.0.0"
+  title: Tag APIs
+servers:
+  - url: 'http://127.0.0.1/api/v1'
+security:
+  - bearerAuth: []
+paths:
+  /tags/list:
+    parameters:
+      - name: provider
+        in: query
+        schema:
+          type: string
+    get:
+      tags:
+        - tag
+      summary: Get the list of all tags
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tag-list'
+              examples:
+                modbusmaster:
+                  $ref: '#/components/examples/modbusmasterTagList'
+                system:
+                  $ref: '#/components/examples/systemTagList'
+  /tags/monitor/{provider}/{source}:
+    parameters:
+      - name: provider
+        in: path
+        required: true
+        description: 'Provider Name - (system, module name, app name)'
+        schema:
+          type: string
+      - name: source
+        in: path
+        required: true
+        description: 'Source Name - (device name, function name)'
+        schema:
+          type: string
+      - name: tags
+        in: query
+        description: 'Tag Name - format (tags=name1,name2,name3)'
+        schema:
+          type: string
+      - name: ms
+        in: query
+        description: history data search in milliseconds
+        schema:
+          type: integer
+      - name: streamInterval
+        in: query
+        description: >-
+          create a http streaming connection and response data by milliseconds
+          time interval
+        schema:
+          type: integer
+      - name: compute
+        in: query
+        description: apply a compute method during streaming
+        schema:
+          type: string
+          enum:
+            - diff
+      - name: onChanged
+        in: query
+        description: >-
+          create a http streaming connection and response data on tag value changed
+        schema:
+          type: boolean
+    get:
+      tags:
+        - monitor
+      summary: Get monitoring tag values
+      description: >-
+        Returns value of tags in taghub which queried by different sources and
+        time
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/tags-monitor'
+              examples:
+                modbus_tcp_master:
+                  $ref: '#/components/examples/tags-monitor'
+  /tags/access/{provider}/{source}/{tag}:
+    parameters:
+      - name: provider
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: source
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: tag
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+        - access
+      summary: Direct read method by tag
+      description: 'Only ''r'', ''rw'' access type can work.'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tags-access-response'
+        '400':
+          description: Failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tags-access-error'
+    put:
+      tags:
+        - access
+      summary: Direct write method by tag
+      description: 'Only ''w'', ''rw'' access type can work.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tags-access'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tags-access-error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    tag:
+      type: object
+      properties:
+        prvdName:
+          type: string
+        srcName:
+          type: string
+        tagName:
+          type: string
+        dataType:
+          type: string
+          enum:
+            - uint8
+            - uint16
+            - uint32
+            - uint64
+            - int8
+            - int16
+            - int32
+            - int64
+            - float
+            - double
+            - string
+            - boolean
+            - byte-array
+            - raw
+        dataSize:
+          type: integer
+          format: int32
+        duration:
+          type: integer
+          format: int32
+        dataUnit:
+          type: string
+        access:
+          type: string
+          enum:
+            - r
+            - w
+            - rw
+    tag-list:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/tag'
+    protocol-list:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: string
+    tags-monitor:
+      type: array
+      items:
+        type: object
+        properties:
+          prvdName:
+            type: string
+            description: provider name (system, virtual, modules name)
+          srcName:
+            type: string
+            description: source name (device, function name)
+          tagName:
+            type: string
+            description: tag name
+          ts:
+            type: integer
+            format: int64
+            description: the abbreviation of timestamp (microsecond)
+          dataType:
+            type: string
+            enum:
+            - uint8
+            - uint16
+            - uint32
+            - uint64
+            - int8
+            - int16
+            - int32
+            - int64
+            - float
+            - double
+            - string
+            - boolean
+            - byte-array
+            - raw
+          dataValue:
+            type: object
+          dataUnit:
+            type: string
+    tags-access:
+      type: object
+      properties:
+        dataType:
+          type: string
+          example: int16
+        dataValue:
+          type: object
+          example: 1
+    tags-access-response:
+      type: object
+      properties:
+        prvdName:
+          type: string
+          example: modbus_tcp_master
+        srcName:
+          type: string
+          example: ioLogik
+        tagName:
+          type: string
+          example: di0
+        timestamp:
+          type: string
+          example: '1560322153374'
+        dataType:
+          type: string
+          example: uint16
+        dataValue:
+          type: object
+          example: 1
+    tags-access-error:
+      type: object
+      properties:
+        message:
+          type: string
+  examples:
+    tags-monitor:
+      value:
+        data:
+          prvdName: modbus_tcp_master
+          srcName: ioLogik-E1210
+          tagName: di0
+          dataType: uint16
+          dataValue: 1
+          dataUnit: mA
+          ts: 1541409957933
+    systemTagList:
+      value:
+        data:
+          - prvdName: system
+            srcName: cpu
+            tagName: usage
+            dataType: int32
+            dataSize: 1
+            dataUnit: '%'
+            access: r
+    modbusmasterTagList:
+      value:
+        data:
+          - prvdName: modbus_tcp_master
+            srcName: ioLogik
+            tagName: di0
+            dataType: byte-array
+            dataSize: 20
+            dataUnit: 'mA'
+            access: r

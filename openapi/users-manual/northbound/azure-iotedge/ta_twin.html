@@ -1,0 +1,828 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Module Twin - ThingsPro Edge - User&#x27;s Manual</title>
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../../overview/what-is-TPE.html"><strong aria-hidden="true">1.</strong> What is ThingsPro Edge?</a></li><li class="chapter-item expanded "><a href="../../overview/what-is-TPP.html"><strong aria-hidden="true">2.</strong> What is ThingsPro Proxy?</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../../quick_started/initial_configuration.html"><strong aria-hidden="true">3.</strong> Initial Configuration</a></li><li class="chapter-item expanded "><a href="../../quick_started/installation.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Northbound Services</li><li class="chapter-item expanded "><a href="../../northbound/mqtt_client.html"><strong aria-hidden="true">5.</strong> MQTT Client</a></li><li class="chapter-item expanded "><a href="../../northbound/sparkplugB.html"><strong aria-hidden="true">6.</strong> Sparkplug B.</a></li><li class="chapter-item expanded "><a href="../../northbound/aid.html"><strong aria-hidden="true">7.</strong> Azure IoT Device</a></li><li class="chapter-item expanded "><a href="../../northbound/aie.html"><strong aria-hidden="true">8.</strong> Azure IoT Edge</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../northbound/azure-iotedge/ta.html"><strong aria-hidden="true">8.1.</strong> ThingsPro Agent</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../northbound/azure-iotedge/ta_twin.html" class="active"><strong aria-hidden="true">8.1.1.</strong> Module Twin</a></li><li class="chapter-item expanded "><a href="../../northbound/azure-iotedge/ta_command.html"><strong aria-hidden="true">8.1.2.</strong> Direct Method</a></li></ol></li><li class="chapter-item expanded "><a href="../../northbound/azure-iotedge/module.html"><strong aria-hidden="true">8.2.</strong> Module Development</a></li></ol></li><li class="chapter-item expanded "><a href="../../northbound/aws_iot_core.html"><strong aria-hidden="true">9.</strong> AWS IoT Core</a></li><li class="chapter-item expanded affix "><li class="part-title">Southbound Services</li><li class="chapter-item expanded "><a href="../../southbound_services/modbus.html"><strong aria-hidden="true">10.</strong> Modbus</a></li><li class="chapter-item expanded "><a href="../../southbound_services/opcua.html"><strong aria-hidden="true">11.</strong> OPC UA Server </a></li><li class="chapter-item expanded affix "><li class="part-title">Device Configuration</li><li class="chapter-item expanded "><a href="../../device_configuration/dashboard.html"><strong aria-hidden="true">12.</strong> Dashboard</a></li><li class="chapter-item expanded "><a href="../../device_configuration/general_settings.html"><strong aria-hidden="true">13.</strong> General Settings</a></li><li class="chapter-item expanded "><a href="../../device_configuration/system_settings.html"><strong aria-hidden="true">14.</strong> System Settings</a></li><li class="chapter-item expanded "><a href="../../device_configuration/import_export.html"><strong aria-hidden="true">15.</strong> Import/ Export</a></li><li class="chapter-item expanded "><a href="../../device_configuration/sys_event_logs.html"><strong aria-hidden="true">16.</strong> System/ Event Logs</a></li><li class="chapter-item expanded affix "><li class="part-title">Security</li><li class="chapter-item expanded "><a href="../../security/user_management.html"><strong aria-hidden="true">17.</strong> User Management</a></li><li class="chapter-item expanded "><a href="../../security/upgrade.html"><strong aria-hidden="true">18.</strong> Upgrade</a></li><li class="chapter-item expanded affix "><li class="part-title">Compatibility</li><li class="chapter-item expanded "><a href="../../compatibility/eligible_devices.html"><strong aria-hidden="true">19.</strong> Eligible Devices</a></li><li class="chapter-item expanded "><a href="../../compatibility/software_development.html"><strong aria-hidden="true">20.</strong> Software Development</a></li><li class="chapter-item expanded "><a href="../../compatibility/knowissues_limitations.html"><strong aria-hidden="true">21.</strong> Known Issue &amp; Limitations</a></li><li class="chapter-item expanded affix "><li class="part-title">Tech Notes</li><li class="chapter-item expanded "><a href="../../tech_notes/modbus_master.html"><strong aria-hidden="true">22.</strong> Modbus Master Specification</a></li><li class="chapter-item expanded "><a href="../../tech_notes/ota_software_upgrade.html"><strong aria-hidden="true">23.</strong> OTA Software Upgrade</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">ThingsPro Edge - User&#x27;s Manual</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="module-twin---reported-properties"><a class="header" href="#module-twin---reported-properties">Module Twin - Reported Properties</a></h2>
+<p>Thingspro Agent exposes device's up to date configurations by reported properties when it connected. The reported properties be categorize by below.</p>
+<h4 id="sections-of-reported-properties"><a class="header" href="#sections-of-reported-properties">Sections of Reported Properties</a></h4>
+<table><thead><tr><th>No</th><th>Section</th><th>Description</th></tr></thead><tbody>
+<tr><td>1</td><td>applications</td><td>List all installed applications on ThingsPro Edge.</td></tr>
+<tr><td>2</td><td>httpserver</td><td>Display HTTP Server setting, and status.</td></tr>
+<tr><td>3</td><td>sshserver</td><td>Display SSH Server setting, and status.</td></tr>
+<tr><td>4</td><td>discovery</td><td>Show discovery service status: enable / disable.</td></tr>
+<tr><td>5</td><td>serialconsole</td><td>Show serial console status: enable / disable.</td></tr>
+<tr><td>6</td><td>wan</td><td>Display network interface which connect to WAN.</td></tr>
+<tr><td>7</td><td>route</td><td>List routing priority for each network interface.</td></tr>
+<tr><td>8</td><td>dhcpservers</td><td>List DHCP Server status and configuration.</td></tr>
+<tr><td>9</td><td>serials</td><td>List serial port configuration.</td></tr>
+<tr><td>10</td><td>time</td><td>Display system time zone and NTP setting.</td></tr>
+<tr><td>11</td><td>ethernets</td><td>List Ethernet interface status and configuration.</td></tr>
+<tr><td>12</td><td>general</td><td>List device general properties, such as CPU type, Firmware version, ThingsPro Edge version and etc.</td></tr>
+<tr><td>13</td><td>gps</td><td>Display GPS setting.</td></tr>
+<tr><td>14</td><td>installations</td><td>Display OTA upgrade progress and result.</td></tr>
+<tr><td>15</td><td>wifi</td><td>Display wifi setting.</td></tr>
+<tr><td>16</td><td>cellulars</td><td>List cellular interface status and configuration.</td></tr>
+</tbody></table>
+<h4 id="sample-of-reported-properties"><a class="header" href="#sample-of-reported-properties">Sample of Reported Properties</a></h4>
+<pre><code>{
+    &quot;applications&quot;: {
+        &quot;list&quot;: {            
+            &quot;0&quot;: {
+                &quot;description&quot;: &quot;MOXA Modbus TCP Client (Master)&quot;,
+                &quot;desiredState&quot;: &quot;ready&quot;,
+                &quot;displayName&quot;: &quot;Modbus TCP Client (Master)&quot;,
+                &quot;hardwares&quot;: {
+                    &quot;arraySize&quot;: 0
+                },
+                &quot;health&quot;: &quot;good&quot;,
+                &quot;icon&quot;: &quot;/app-icons/modbusmaster-tcp.png&quot;,
+                &quot;id&quot;: &quot;modbusmaster-tcp&quot;,
+                &quot;name&quot;: &quot;modbusmaster-tcp&quot;,
+                &quot;state&quot;: &quot;ready&quot;,
+                &quot;version&quot;: &quot;3.14.0-278&quot;
+            },
+            &quot;arraySize&quot;: 1
+        }
+    },
+    &quot;httpserver&quot;: {
+        &quot;certFileName&quot;: &quot;default.crt&quot;,
+        &quot;httpEnable&quot;: true,
+        &quot;httpPort&quot;: 80,
+        &quot;httpsEnable&quot;: true,
+        &quot;httpsPort&quot;: 8443,
+        &quot;keyFileName&quot;: &quot;default.key&quot;
+    },
+    &quot;sshserver&quot;: {
+        &quot;enable&quot;: true,
+        &quot;port&quot;: 22
+    },
+    &quot;discovery&quot;: {
+        &quot;enable&quot;: true
+    },
+    &quot;serialconsole&quot;: {
+        &quot;enable&quot;: true
+    },
+    &quot;wan&quot;: {
+        &quot;displayName&quot;: &quot;LAN1&quot;,
+        &quot;dns&quot;: {
+            &quot;0&quot;: &quot;10.128.8.5&quot;,
+            &quot;arraySize&quot;: 1
+        },
+        &quot;gateway&quot;: &quot;10.144.51.254&quot;,
+        &quot;ip&quot;: &quot;10.144.48.128&quot;,
+        &quot;name&quot;: &quot;eth0&quot;,
+        &quot;netmask&quot;: &quot;255.255.252.0&quot;,
+        &quot;type&quot;: &quot;wan&quot;
+    },
+    &quot;route&quot;: {
+        &quot;priorityList&quot;: {
+            &quot;0&quot;: &quot;Cellular1&quot;,
+            &quot;1&quot;: &quot;LAN1&quot;,
+            &quot;arraySize&quot;: 2
+        },
+        &quot;type&quot;: &quot;route&quot;
+    },
+    &quot;dhcpservers&quot;: {
+        &quot;0&quot;: {
+            &quot;available&quot;: false,
+            &quot;displayName&quot;: &quot;LAN1&quot;,
+            &quot;domainName&quot;: &quot;&quot;,
+            &quot;domainNameServers&quot;: {
+                &quot;0&quot;: &quot;8.8.8.8&quot;,
+                &quot;1&quot;: &quot;8.8.4.4&quot;,
+                &quot;arraySize&quot;: 2
+            },
+            &quot;enable&quot;: false,
+            &quot;endIp&quot;: &quot;192.168.3.250&quot;,
+            &quot;id&quot;: 1,
+            &quot;leaseTime&quot;: 3600,
+            &quot;name&quot;: &quot;eth0&quot;,
+            &quot;netmask&quot;: &quot;255.255.255.0&quot;,
+            &quot;startIp&quot;: &quot;192.168.3.200&quot;,
+            &quot;status&quot;: false,
+            &quot;type&quot;: &quot;dhcpservers&quot;
+        },
+        &quot;arraySize&quot;: 1
+    },
+    &quot;serials&quot;: {
+        &quot;0&quot;: {
+            &quot;baudRate&quot;: 9600,
+            &quot;dataBits&quot;: 8,
+            &quot;device&quot;: &quot;/dev/ttyM0&quot;,
+            &quot;displayName&quot;: &quot;PORT 1&quot;,
+            &quot;flowControl&quot;: &quot;none&quot;,
+            &quot;id&quot;: 1,
+            &quot;mode&quot;: &quot;rs232&quot;,
+            &quot;parity&quot;: &quot;none&quot;,
+            &quot;stopBits&quot;: 1,
+            &quot;type&quot;: &quot;serials&quot;
+        },
+        &quot;arraySize&quot;: 1
+    },
+    &quot;time&quot;: {
+        &quot;ntp&quot;: {
+            &quot;enable&quot;: false,
+            &quot;interval&quot;: 7200,
+            &quot;server&quot;: &quot;pool.ntp.org&quot;
+        },
+        &quot;timezone&quot;: &quot;Asia/Taipei&quot;,
+        &quot;type&quot;: &quot;time&quot;
+    },
+    &quot;general&quot;: {
+        &quot;cpu&quot;: &quot;ARMv7 Processor rev 2 (v7l)&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;deviceType&quot;: &quot;gateway&quot;,
+        &quot;firmwareVersion&quot;: &quot;3.0&quot;,
+        &quot;hostName&quot;: &quot;Moxa&quot;,
+        &quot;lastBootTime&quot;: &quot;2019-11-13T11:42:51Z&quot;,
+        &quot;lastRebootTime&quot;: &quot;&quot;,
+        &quot;memorySize&quot;: 524333056,
+        &quot;modelName&quot;: &quot;UC-8112-LX&quot;,        
+        &quot;serialNumber&quot;: &quot;TAIAB1021075&quot;,
+        &quot;thingsproVersion&quot;: &quot;1.1.0-348&quot;,
+        &quot;type&quot;: &quot;general&quot;
+    },
+    &quot;ethernets&quot;: {
+        &quot;0&quot;: {
+            &quot;broadcast&quot;: &quot;10.144.51.255&quot;,
+            &quot;displayName&quot;: &quot;LAN1&quot;,
+            &quot;dns&quot;: {
+                &quot;0&quot;: &quot;10.128.8.5&quot;,
+                &quot;arraySize&quot;: 1
+            },
+            &quot;enable&quot;: true,
+            &quot;enableDhcp&quot;: false,
+            &quot;gateway&quot;: &quot;10.144.51.254&quot;,
+            &quot;id&quot;: 1,
+            &quot;ip&quot;: &quot;10.144.48.128&quot;,
+            &quot;mac&quot;: &quot;00:90:e8:77:06:61&quot;,
+            &quot;name&quot;: &quot;eth0&quot;,
+            &quot;netmask&quot;: &quot;255.255.252.0&quot;,
+            &quot;status&quot;: &quot;connected&quot;,
+            &quot;subnet&quot;: &quot;10.144.48.0&quot;,
+            &quot;type&quot;: &quot;ethernets&quot;,
+            &quot;wan&quot;: true
+        },
+        &quot;arraySize&quot;: 1
+    },
+    &quot;gps&quot;: {
+        &quot;interface&quot;: &quot;&quot;,
+        &quot;location&quot;: {
+          &quot;lat&quot;: 14,
+          &quot;lng&quot;: 15
+        },
+        &quot;mode&quot;: &quot;manual&quot;,
+        &quot;type&quot;: &quot;gps&quot;
+    },
+    &quot;installations&quot;: {
+        &quot;completedTask&quot;: 0,
+        &quot;id&quot;: 3,
+        &quot;isDeleted&quot;: false,
+        &quot;jobID&quot;: 3,
+        &quot;lastState&quot;: &quot;&quot;,
+        &quot;owner&quot;: &quot;admin&quot;,
+        &quot;parameter&quot;: {
+          &quot;download&quot;: false,
+          &quot;install&quot;: true,
+          &quot;jobID&quot;: 2
+        },
+        &quot;state&quot;: &quot;created&quot;
+    },
+    &quot;wifi&quot;: {
+        &quot;0&quot;: {
+          &quot;ap&quot;: {
+            &quot;band&quot;: &quot;band24&quot;,
+            &quot;broadcastSsid&quot;: true,
+            &quot;channel&quot;: 6,
+            &quot;region&quot;: &quot;TW&quot;,
+            &quot;security&quot;: {
+              &quot;mode&quot;: &quot;wpa2&quot;,
+              &quot;password&quot;: &quot;&quot;,
+              &quot;encryption&quot;: &quot;aes&quot;
+            },
+            &quot;ssid&quot;: &quot;moxa-sample-ap&quot;
+          },
+          &quot;enable&quot;: true,
+          &quot;id&quot;: 1,
+          &quot;type&quot;: &quot;wifi&quot;,
+          &quot;name&quot;: &quot;wlan0&quot;,
+          &quot;mode&quot;: &quot;ap&quot;
+        },
+        &quot;arraySize&quot;: 1
+    },
+    &quot;cellulars&quot;: {
+        &quot;0&quot;: {
+          &quot;autoDetect&quot;: false,
+          &quot;available&quot;: true,
+          &quot;capabilities&quot;: {
+            &quot;sim&quot;: 1
+          },
+          &quot;currentProfileId&quot;: 0,
+          &quot;displayName&quot;: &quot;Cellular1&quot;,
+          &quot;enable&quot;: false,
+          &quot;iccid&quot;: &quot;&quot;,
+          &quot;id&quot;: 1,
+          &quot;imei&quot;: &quot;&quot;,
+          &quot;imsi&quot;: &quot;&quot;,
+          &quot;keepalive&quot;: {
+            &quot;enable&quot;: false,
+            &quot;intervalSec&quot;: 120,
+            &quot;targetHost&quot;: &quot;8.8.8.8&quot;
+          },
+          &quot;mac&quot;: &quot;02:01:02:18:00:0b&quot;,
+          &quot;module&quot;: &quot;u-blox TOBY-L2 series&quot;,
+          &quot;name&quot;: &quot;usb0&quot;,
+          &quot;operatorName&quot;: &quot;&quot;,
+          &quot;pinRetryRemain&quot;: 0,
+          &quot;profileTimeout&quot;: 140,
+          &quot;profiles&quot;: {
+            &quot;0&quot;: {
+              &quot;id&quot;: 1,
+              &quot;init&quot;: {
+                &quot;0&quot;: &quot;sim:1&quot;,
+                &quot;arraySize&quot;: 1
+              },
+              &quot;name&quot;: &quot;SIM1&quot;,
+              &quot;pdpContext&quot;: {
+                &quot;apn&quot;: &quot;internet&quot;,
+                &quot;auth&quot;: {
+                  &quot;password&quot;: &quot;&quot;,
+                  &quot;protocol&quot;: &quot;none&quot;,
+                  &quot;username&quot;: &quot;&quot;
+                },
+                &quot;id&quot;: 1,
+                &quot;static&quot;: true,
+                &quot;type&quot;: &quot;ipv4&quot;
+              },
+              &quot;pinCode&quot;: &quot;0000&quot;
+            },
+            &quot;arraySize&quot;: 1
+          },
+          &quot;rat&quot;: &quot;&quot;,
+          &quot;status&quot;: &quot;disconnected&quot;,
+          &quot;type&quot;: &quot;cellulars&quot;,
+          &quot;wan&quot;: true
+        },
+        &quot;arraySize&quot;: 1
+    }
+}
+</code></pre>
+<h2 id="module-twin---desired-properties"><a class="header" href="#module-twin---desired-properties">Module Twin - Desired Properties</a></h2>
+<p>ThingsPro Agent allow you to re-configure device and turn on/off services via Desired Properties. In current version, ThingsPro Agent allow below sections to be update via Desired Properties.</p>
+<h4 id="sections-of-desired-properties"><a class="header" href="#sections-of-desired-properties">Sections of Desired Properties</a></h4>
+<table><thead><tr><th>No</th><th>Section</th><th>Description</th></tr></thead><tbody>
+<tr><td>1</td><td>httpserver</td><td>To enable/disable and change HTTP(s) port.</td></tr>
+<tr><td>2</td><td>sshserver</td><td>To enable/disable and change SSH port.</td></tr>
+<tr><td>3</td><td>discovery</td><td>To enable/disable device discovery service.</td></tr>
+<tr><td>4</td><td>serialconsole</td><td>To enable/disable serial console port.</td></tr>
+<tr><td>5</td><td>dhcpservers</td><td>To setup DHCP Server configuration.</td></tr>
+<tr><td>6</td><td>serials</td><td>To setup serial port configuration.</td></tr>
+<tr><td>7</td><td>time</td><td>To setup time zone, and enable/disable and setup NTP server.</td></tr>
+<tr><td>8</td><td>ethernets</td><td>To setup Ethernet configuration.</td></tr>
+<tr><td>9</td><td>general</td><td>To update host name and device description.</td></tr>
+<tr><td>10</td><td>gps</td><td>To switch GPS mode to auto or manual.</td></tr>
+<tr><td>11</td><td>wifi</td><td>To setup Wi-Fi AP configuration.</td></tr>
+<tr><td>12</td><td>cellulars</td><td>To setup cellulars configuration.</td></tr>
+</tbody></table>
+<p><font color='red'><b>Note:</b></font></p>
+<p>There are two keys that is commonly used in the desired properties:</p>
+<ul>
+<li><strong>id</strong>:
+A device may own multiple interfaces of same kind resource, <strong>id</strong> specifies which interface is to be configured. <font><b>id</b></font> starts from <font color='blue'><b>0</b></font>.</li>
+<li><strong>arraySize</strong>:
+Azure device twin currently does not support array, so an array is encoded to a object containing children objects and an <strong>arraySize</strong> key. This value should match the number of children objects, else the remaining objects will be discarded.</li>
+</ul>
+<h4 id="1-https-server"><a class="header" href="#1-https-server">1. HTTP(s) Server</a></h4>
+<ul>
+<li>
+<p>Update HTTP(s) Server configuration</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;httpserver&quot;: {
+            &quot;httpEnable&quot;: true,
+  	      &quot;httpPort&quot;: 80,
+  	      &quot;httpsEnable&quot;: true,
+  	      &quot;httpsPort&quot;: 8443
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="2-ssh-server"><a class="header" href="#2-ssh-server">2. SSH Server</a></h4>
+<ul>
+<li>
+<p>Update SSH Server configuration</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;sshserver&quot;: {
+            &quot;enable&quot;: true,
+            &quot;port&quot;: 22
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="3-discovery-service"><a class="header" href="#3-discovery-service">3. Discovery Service</a></h4>
+<ul>
+<li>
+<p>Update Discovery Service status</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;discovery&quot;: {
+            &quot;enable&quot;: true
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="4-serial-console-port"><a class="header" href="#4-serial-console-port">4. Serial Console Port</a></h4>
+<ul>
+<li>
+<p>Enable / Disable Serial Console Port</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;serialconsole&quot;: {
+            &quot;enable&quot;: true
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="5-dhcp-server"><a class="header" href="#5-dhcp-server">5. DHCP Server</a></h4>
+<ul>
+<li>
+<p>Update DHCP Server</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;dhcpservers&quot;: {
+            &quot;0&quot;: {
+                &quot;id&quot;: 1,
+                &quot;enable&quot;: true,
+                &quot;startIp&quot;: &quot;192.168.3.100&quot;,
+                &quot;endIp&quot;: &quot;192.168.3.200&quot;,
+                &quot;netmask&quot;: &quot;255.255.255.0&quot;,
+                &quot;domainNameServers&quot;: {
+                    &quot;0&quot;: &quot;8.8.8.8&quot;,
+                    &quot;arraySize&quot;: 1
+                },
+                &quot;domainName&quot;: &quot;example.com&quot;,
+                &quot;leaseTime&quot;: 2592000
+            },
+            &quot;arraySize&quot;: 1
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="6-serial-port"><a class="header" href="#6-serial-port">6. Serial Port</a></h4>
+<ul>
+<li>
+<p>Update Serial Port to rs232</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;serials&quot;: {
+            &quot;0&quot;: {
+                &quot;id&quot;: 1,
+                &quot;mode&quot;: &quot;rs232&quot;,
+                &quot;displayName&quot;: &quot;PORT 1&quot;,
+                &quot;baudRate&quot;: 115200,
+                &quot;parity&quot;: &quot;none&quot;,
+                &quot;dataBits&quot;: 8,
+                &quot;stopBits&quot;: 1,
+                &quot;flowControl&quot;: &quot;software&quot;
+          },
+            &quot;arraySize&quot;: 1
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<p>​</p>
+<table><thead><tr><th>No</th><th>Name</th><th>Available Values</th></tr></thead><tbody>
+<tr><td>1</td><td>mode</td><td>rs232, rs422, rs4852w, rs4854w</td></tr>
+<tr><td>2</td><td>baudRate</td><td>300, 600, 1200, 1800, 2400, 4800, 9600, 19200, 38400, 57600, 115200, 230400, 460800, 921600</td></tr>
+<tr><td>3</td><td>parity</td><td>none, even, space, mark</td></tr>
+<tr><td>4</td><td>dataBits</td><td>5,6,7,8</td></tr>
+<tr><td>5</td><td>stopBits</td><td>1,2,1.5</td></tr>
+<tr><td>6</td><td>flowControl</td><td>none, hardware, software</td></tr>
+</tbody></table>
+<h4 id="7-time-service"><a class="header" href="#7-time-service">7. Time Service</a></h4>
+<ul>
+<li>
+<p>Update NTP Settings</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;time&quot;: {
+            &quot;ntp&quot;: {
+                &quot;enable&quot;: true,
+                &quot;interval&quot;: 6000,
+                &quot;server&quot;: &quot;tock.stdtime.gov.tw&quot;
+            }
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>Update Time zone</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;time&quot;: {
+            &quot;timezone&quot;: &quot;Asia/Taipei&quot;
+        }
+    }
+}
+</code></pre>
+<p>引用Timezone list can be found at https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</p>
+</li>
+</ul>
+<h4 id="8-ethernet"><a class="header" href="#8-ethernet">8. Ethernet</a></h4>
+<ul>
+<li>
+<p>Update an Ethernet Interface to Dynamic IP</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;ethernets&quot;: {
+            &quot;0&quot;: {
+                &quot;id&quot;: 1,
+                &quot;enable&quot;: true,
+                &quot;enableDhcp&quot;: true,
+                &quot;wan&quot;: true
+            },
+            &quot;arraySize&quot;: 1
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>Update an Ethernet Interface to Static IP</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;ethernets&quot;: {
+            &quot;0&quot;: {
+                &quot;id&quot;: 1,
+                &quot;dns&quot;: {
+                    &quot;0&quot;: &quot;1.2.3.4&quot;,
+                    &quot;arraySize&quot;: 1
+                },
+                &quot;enable&quot;: true,
+                &quot;enableDhcp&quot;: false,
+                &quot;gateway&quot;: &quot;1.2.3.5&quot;,
+                &quot;ip&quot;: &quot;1.2.3.6&quot;,
+                &quot;netmask&quot;: &quot;255.255.255.0&quot;,
+                &quot;wan&quot;: true
+            },
+            &quot;arraySize&quot;: 1
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="9-general"><a class="header" href="#9-general">9. General</a></h4>
+<ul>
+<li>
+<p>Update device host name</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;general&quot;: {            
+            &quot;hostName&quot;: &quot;MyHost&quot;
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>Update device description</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;general&quot;: {            
+            &quot;description&quot;: &quot;MyDevice&quot;
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="10-gps"><a class="header" href="#10-gps">10. GPS</a></h4>
+<ul>
+<li>
+<p>Update GPS lat, lng by manual mode</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;gps&quot;:{
+            &quot;mode&quot;: &quot;manual&quot;,
+            &quot;location&quot;: {
+                &quot;lat&quot;: 11,
+                &quot;lng&quot;: 12
+            }
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>Update GPS by auto mode</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;gps&quot;:{
+            &quot;mode&quot;: &quot;auto&quot;,
+            &quot;interface&quot;: &quot;/dev/ttyUSB0&quot;
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="11-wi-fi"><a class="header" href="#11-wi-fi">11. Wi-Fi</a></h4>
+<ul>
+<li>
+<p>Enable / Disable Wi-Fi AP mode</p>
+<pre><code>{
+    &quot;desired&quot;: {
+        &quot;wifi&quot;: {
+            &quot;0&quot;: {
+                &quot;ap&quot;: {
+                    &quot;band&quot;: &quot;band24&quot;,
+                    &quot;broadcastSsid&quot;: true,
+                    &quot;channel&quot;: 6,
+                    &quot;region&quot;: &quot;TW&quot;,
+                    &quot;security&quot;: {
+                      &quot;mode&quot;: &quot;wpa2&quot;,
+                      &quot;password&quot;: &quot;&quot;,
+                      &quot;encryption&quot;: &quot;aes&quot;
+                    },
+                    &quot;ssid&quot;: &quot;moxa-sample-ap&quot;
+                },
+                &quot;enable&quot;: true,
+                &quot;id&quot;: 1,
+                &quot;type&quot;: &quot;wifi&quot;,
+                &quot;name&quot;: &quot;wlan0&quot;,
+                &quot;mode&quot;: &quot;ap&quot;
+            },
+            &quot;arraySize&quot;: 1
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="12-cellulars"><a class="header" href="#12-cellulars">12. Cellulars</a></h4>
+<ul>
+<li>Update cellular pin code
+<pre><code>{
+  &quot;desired&quot;: {
+    &quot;cellulars&quot;: {
+      &quot;0&quot;: {
+        &quot;autoDetect&quot;: false,
+        &quot;available&quot;: true,
+        &quot;capabilities&quot;: {
+          &quot;sim&quot;: 1
+        },
+        &quot;currentProfileId&quot;: 0,
+        &quot;displayName&quot;: &quot;Cellular1&quot;,
+        &quot;enable&quot;: false,
+        &quot;iccid&quot;: &quot;&quot;,
+        &quot;id&quot;: 1,
+        &quot;imei&quot;: &quot;358503060483337&quot;,
+        &quot;imsi&quot;: &quot;&quot;,
+        &quot;keepalive&quot;: {
+          &quot;enable&quot;: false,
+          &quot;intervalSec&quot;: 120,
+          &quot;targetHost&quot;: &quot;8.8.8.8&quot;
+        },
+        &quot;mac&quot;: &quot;02:01:02:18:00:0b&quot;,
+        &quot;module&quot;: &quot;u-blox TOBY-L2 series&quot;,
+        &quot;name&quot;: &quot;usb0&quot;,
+        &quot;operatorName&quot;: &quot;&quot;,
+        &quot;pinRetryRemain&quot;: 0,
+        &quot;profileTimeout&quot;: 140,
+        &quot;profiles&quot;: {
+          &quot;0&quot;: {
+            &quot;id&quot;: 1,
+            &quot;init&quot;: {
+              &quot;0&quot;: &quot;sim:1&quot;,
+              &quot;arraySize&quot;: 1
+            },
+            &quot;name&quot;: &quot;SIM1&quot;,
+            &quot;pdpContext&quot;: {
+              &quot;apn&quot;: &quot;internet&quot;,
+              &quot;auth&quot;: {
+                &quot;password&quot;: &quot;&quot;,
+                &quot;protocol&quot;: &quot;none&quot;,
+                &quot;username&quot;: &quot;&quot;
+              },
+              &quot;id&quot;: 1,
+              &quot;static&quot;: true,
+              &quot;type&quot;: &quot;ipv4&quot;
+            },
+            &quot;pinCode&quot;: &quot;0000&quot;
+          },
+          &quot;arraySize&quot;: 1
+        },
+        &quot;rat&quot;: &quot;&quot;,
+        &quot;signal&quot;: {
+          &quot;csq&quot;: 0,
+          &quot;ecio&quot;: 0,
+          &quot;indicator&quot;: &quot;&quot;,
+          &quot;level&quot;: 0,
+          &quot;rat&quot;: &quot;&quot;,
+          &quot;rscp&quot;: 0,
+          &quot;rsrp&quot;: 0,
+          &quot;rsrq&quot;: 0,
+          &quot;rssi&quot;: 0,
+          &quot;rxqual&quot;: 0
+        },
+        &quot;status&quot;: &quot;disconnected&quot;,
+        &quot;type&quot;: &quot;cellulars&quot;,
+        &quot;wan&quot;: true
+      },
+      &quot;arraySize&quot;: 1
+    }
+  }
+}
+</code></pre>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../northbound/azure-iotedge/ta.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../northbound/azure-iotedge/ta_command.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../northbound/azure-iotedge/ta.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../northbound/azure-iotedge/ta_command.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
