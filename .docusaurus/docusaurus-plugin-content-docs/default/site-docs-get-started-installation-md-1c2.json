@@ -1,0 +1,24 @@
+{
+  "unversionedId": "get-started/installation",
+  "id": "get-started/installation",
+  "isDocsHomePage": false,
+  "title": "Installation",
+  "description": "Install ThingsPro Edge from the installer",
+  "source": "@site/docs/get-started/installation.md",
+  "sourceDirName": "get-started",
+  "slug": "/get-started/installation",
+  "permalink": "/docs/next/get-started/installation",
+  "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/get-started/installation.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "What Is ThingsPro Proxy?",
+    "permalink": "/docs/next/intro/what-is-TPP"
+  },
+  "next": {
+    "title": "Device Configuration",
+    "permalink": "/docs/next/get-started/initial_configuration"
+  }
+}

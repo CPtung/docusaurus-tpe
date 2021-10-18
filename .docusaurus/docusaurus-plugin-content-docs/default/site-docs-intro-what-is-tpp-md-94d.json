@@ -1,0 +1,24 @@
+{
+  "unversionedId": "intro/what-is-TPP",
+  "id": "intro/what-is-TPP",
+  "isDocsHomePage": false,
+  "title": "What Is ThingsPro Proxy?",
+  "description": "A new Moxa IIoT gateway must be configured correctly before it can be deployed in the field. Moxa's ThingsPro Proxy utility helps you provision new devices in a secure and scalable manner.",
+  "source": "@site/docs/intro/what-is-TPP.md",
+  "sourceDirName": "intro",
+  "slug": "/intro/what-is-TPP",
+  "permalink": "/docs/next/intro/what-is-TPP",
+  "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/intro/what-is-TPP.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "What Is ThingsPro Edge V2.2.1?",
+    "permalink": "/docs/next/intro/what-is-TPE"
+  },
+  "next": {
+    "title": "Installation",
+    "permalink": "/docs/next/get-started/installation"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "unversionedId": "intro/what-is-TPE",
+  "id": "version-2.2.1/intro/what-is-TPE",
+  "isDocsHomePage": false,
+  "title": "What Is ThingsPro Edge?",
+  "description": "ThingsPro Edge is an IIoT edge gateway software that runs on Moxa IIoT Gateways (Moxa's industrial-grade edge computers) enabling you to close the gap between sensors and cloud applications. The containerized software architecture of ThingsPro Edge brings an extensible runtime experience with secure and reliable life-cycle management to functional modules.",
+  "source": "@site/versioned_docs/version-2.2.1/intro/what-is-TPE.md",
+  "sourceDirName": "intro",
+  "slug": "/intro/what-is-TPE",
+  "permalink": "/docs/intro/what-is-TPE",
+  "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/versioned_docs/version-2.2.1/intro/what-is-TPE.md",
+  "tags": [],
+  "version": "2.2.1",
+  "frontMatter": {},
+  "sidebar": "version-2.2.1/docs",
+  "next": {
+    "title": "What Is ThingsPro Proxy?",
+    "permalink": "/docs/intro/what-is-TPP"
+  }
+}

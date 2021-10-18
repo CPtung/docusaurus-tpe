@@ -6,7 +6,7 @@ const path = require('path');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 (module.exports = {
   title: 'ThingsPro',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Oh. So. Pro',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -78,7 +78,7 @@ const path = require('path');
           },
         ],
         theme: {
-          primaryColor: '#1890ff',
+          primaryColor: '#008787',
           redocOptions: { hideDownloadButton: false },
         },
       },
@@ -89,17 +89,13 @@ const path = require('path');
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'ThingsPro',
+        title: 'ThingsPro Edge',
         logo: {
           src: 'img/thingspro2.png',
         },
         items: [
-          {
-            type: 'doc',
-            docId: 'intro/what-is-TPE',
-            position: 'left',
-            label: 'Doc',
-          },
+          {to: 'release-notes', label: 'Release Note', position: 'left'},
+          {to: 'blog', label: 'Blog', position: 'left'},
           {
             type: 'dropdown',
             label: 'OpenAPI',
@@ -128,9 +124,15 @@ const path = require('path');
             ],
           },
           {
+            type: 'doc',
+            docId: 'intro/what-is-TPE',
+            position: 'left',
+            label: 'Documentation',
+          },
+          {
             type: 'docsVersionDropdown',
             position: 'right',
-            dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+            dropdownItemsAfter: [],
             dropdownActiveClassDisabled: true,
           },
         ],

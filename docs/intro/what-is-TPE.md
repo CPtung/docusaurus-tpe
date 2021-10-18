@@ -1,4 +1,4 @@
-# What Is ThingsPro Edge?
+# What Is ThingsPro Edge V2.2.1?
 **ThingsPro Edge** is an **IIoT edge gateway software** that runs on Moxa IIoT Gateways (Moxa's industrial-grade edge computers) enabling you to close the gap between sensors and cloud applications. The containerized software architecture of ThingsPro Edge brings an extensible runtime experience with secure and reliable life-cycle management to functional modules. 
 
 **ThingsPro Edge** offers an easy-to-use user interface to: acquire data from sensors and other field devices, manipulate or filter data locally before sending it out to your applications, and secure data transmission during uploads to popular cloud platforms or your application/database. With the built-in RESTful API, integrating these capabilities into your system is more straightforward than ever.

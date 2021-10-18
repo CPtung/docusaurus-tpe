@@ -1,0 +1,15 @@
+{
+  "unversionedId": "get-started/initial_configuration",
+  "id": "version-2.1.0/get-started/initial_configuration",
+  "isDocsHomePage": false,
+  "title": "Device Configuration",
+  "description": "To get ThingsPro Edge up and running with the default settings, do the following:",
+  "source": "@site/versioned_docs/version-2.1.0/get-started/initial_configuration.md",
+  "sourceDirName": "get-started",
+  "slug": "/get-started/initial_configuration",
+  "permalink": "/docs/2.1.0/get-started/initial_configuration",
+  "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/versioned_docs/version-2.1.0/get-started/initial_configuration.md",
+  "tags": [],
+  "version": "2.1.0",
+  "frontMatter": {}
+}

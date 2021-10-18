@@ -1,0 +1,49 @@
+{
+  "pluginId": "default",
+  "version": "current",
+  "label": "Next",
+  "banner": "unreleased",
+  "badge": true,
+  "className": "docs-version-current",
+  "isLast": false,
+  "docsSidebars": {
+    "docs": [
+      {
+        "type": "category",
+        "collapsed": true,
+        "collapsible": true,
+        "label": "Introduction",
+        "items": [
+          {
+            "type": "link",
+            "label": "What Is ThingsPro Edge V2.2.1?",
+            "href": "/docs/next/intro/what-is-TPE"
+          },
+          {
+            "type": "link",
+            "label": "What Is ThingsPro Proxy?",
+            "href": "/docs/next/intro/what-is-TPP"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "collapsed": true,
+        "collapsible": true,
+        "label": "Get Started",
+        "items": [
+          {
+            "type": "link",
+            "label": "Installation",
+            "href": "/docs/next/get-started/installation"
+          },
+          {
+            "type": "link",
+            "label": "Device Configuration",
+            "href": "/docs/next/get-started/initial_configuration"
+          }
+        ]
+      }
+    ]
+  }
+}

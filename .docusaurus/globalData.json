@@ -1,0 +1,182 @@
+{
+  "docusaurus-theme-redoc": {
+    "default": {
+      "redocOptions": {
+        "hideDownloadButton": false
+      },
+      "lightTheme": {
+        "colors": {
+          "primary": {
+            "main": "#008787"
+          }
+        },
+        "typography": {
+          "fontFamily": "var(--ifm-font-family-base)",
+          "fontSize": "var(--ifm-font-size-base)",
+          "lineHeight": "var(--ifm-line-height-base)",
+          "fontWeightLight": "var(--ifm-font-weight-light)",
+          "fontWeightRegular": "var(--ifm-font-weight-base)",
+          "fontWeightBold": "var(--ifm-font-weight-bold)",
+          "headings": {
+            "fontFamily": "var(--ifm-font-family-base)",
+            "fontWeight": "var(--ifm-font-weight-semibold)",
+            "lineHeight": "var(--ifm-line-height-base)"
+          },
+          "code": {
+            "fontFamily": "var(--ifm-font-family-monospace)",
+            "lineHeight": "var(--ifm-pre-line-height)"
+          }
+        },
+        "sidebar": {
+          "width": "300px",
+          "backgroundColor": "#ffffff"
+        },
+        "rightPanel": {
+          "backgroundColor": "#303846"
+        }
+      },
+      "darkTheme": {
+        "colors": {
+          "primary": {
+            "main": "#008787"
+          },
+          "text": {
+            "primary": "#f5f6f7",
+            "secondary": "rgba(255, 255, 255, 1)"
+          },
+          "gray": {
+            "50": "#FAFAFA",
+            "100": "#F5F5F5"
+          },
+          "border": {
+            "dark": "#ffffff",
+            "light": "rgba(0,0,0, 0.1)"
+          }
+        },
+        "typography": {
+          "fontFamily": "var(--ifm-font-family-base)",
+          "fontSize": "var(--ifm-font-size-base)",
+          "lineHeight": "var(--ifm-line-height-base)",
+          "fontWeightLight": "var(--ifm-font-weight-light)",
+          "fontWeightRegular": "var(--ifm-font-weight-base)",
+          "fontWeightBold": "var(--ifm-font-weight-bold)",
+          "headings": {
+            "fontFamily": "var(--ifm-font-family-base)",
+            "fontWeight": "var(--ifm-font-weight-semibold)",
+            "lineHeight": "var(--ifm-line-height-base)"
+          },
+          "code": {
+            "fontFamily": "var(--ifm-font-family-monospace)",
+            "lineHeight": "var(--ifm-pre-line-height)"
+          }
+        },
+        "sidebar": {
+          "width": "300px",
+          "backgroundColor": "rgb(24, 25, 26)",
+          "textColor": "#f5f6f7",
+          "arrow": {
+            "color": "#f5f6f7"
+          }
+        },
+        "rightPanel": {
+          "backgroundColor": "#303846"
+        },
+        "schema": {
+          "nestedBackground": "rgb(24, 25, 26)",
+          "typeNameColor": "rgba(255, 255, 255, 1)",
+          "typeTitleColor": "rgba(255, 255, 255, 1)"
+        }
+      }
+    }
+  },
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": false,
+          "path": "/docs/next",
+          "mainDocId": "intro/what-is-TPE",
+          "docs": [
+            {
+              "id": "get-started/initial_configuration",
+              "path": "/docs/next/get-started/initial_configuration",
+              "sidebar": "docs"
+            },
+            {
+              "id": "get-started/installation",
+              "path": "/docs/next/get-started/installation",
+              "sidebar": "docs"
+            },
+            {
+              "id": "intro/what-is-TPE",
+              "path": "/docs/next/intro/what-is-TPE",
+              "sidebar": "docs"
+            },
+            {
+              "id": "intro/what-is-TPP",
+              "path": "/docs/next/intro/what-is-TPP",
+              "sidebar": "docs"
+            }
+          ]
+        },
+        {
+          "name": "2.2.0",
+          "label": "2.2.0",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "intro/what-is-TPE",
+          "docs": [
+            {
+              "id": "get-started/initial_configuration",
+              "path": "/docs/get-started/initial_configuration"
+            },
+            {
+              "id": "get-started/installation",
+              "path": "/docs/get-started/installation"
+            },
+            {
+              "id": "intro/what-is-TPE",
+              "path": "/docs/intro/what-is-TPE",
+              "sidebar": "version-2.2.0/docs"
+            },
+            {
+              "id": "intro/what-is-TPP",
+              "path": "/docs/intro/what-is-TPP",
+              "sidebar": "version-2.2.0/docs"
+            }
+          ]
+        },
+        {
+          "name": "2.1.0",
+          "label": "2.1.0",
+          "isLast": false,
+          "path": "/docs/2.1.0",
+          "mainDocId": "intro/what-is-TPE",
+          "docs": [
+            {
+              "id": "get-started/initial_configuration",
+              "path": "/docs/2.1.0/get-started/initial_configuration"
+            },
+            {
+              "id": "get-started/installation",
+              "path": "/docs/2.1.0/get-started/installation"
+            },
+            {
+              "id": "intro/what-is-TPE",
+              "path": "/docs/2.1.0/intro/what-is-TPE",
+              "sidebar": "version-2.1.0/docs"
+            },
+            {
+              "id": "intro/what-is-TPP",
+              "path": "/docs/2.1.0/intro/what-is-TPP",
+              "sidebar": "version-2.1.0/docs"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
