@@ -35,7 +35,7 @@ module.exports = {
           //           sidebarPath: require.resolve('./sidebars.js'),
           sidebarPath: path.resolve(__dirname, './sidebars.json'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/CPtung/docusaurus-tpe/',
+          editUrl: 'https://github.com/CPtung/docusaurus-tpe/blob/main/',
         },
         blog: {
           showReadingTime: true,
