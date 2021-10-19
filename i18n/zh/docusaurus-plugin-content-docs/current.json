@@ -4,11 +4,11 @@
     "description": "The label for version current"
   },
   "sidebar.docs.category.Introduction": {
-    "message": "Introduction",
+    "message": "介紹",
     "description": "The label for category Introduction in sidebar docs"
   },
   "sidebar.docs.category.Get Started": {
-    "message": "Get Started",
+    "message": "著手開始",
     "description": "The label for category Get Started in sidebar docs"
   }
 }
