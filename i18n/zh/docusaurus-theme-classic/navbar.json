@@ -1,0 +1,42 @@
+{
+  "title": {
+    "message": "ThingsPro Edge",
+    "description": "The title in the navbar"
+  },
+  "item.label.Release Note": {
+    "message": "Release Note",
+    "description": "Navbar item with label Release Note"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.OpenAPI": {
+    "message": "OpenAPI",
+    "description": "Navbar item with label OpenAPI"
+  },
+  "item.label.Documentation": {
+    "message": "Documentation",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.Core": {
+    "message": "Core",
+    "description": "Navbar item with label Core"
+  },
+  "item.label.Cloud": {
+    "message": "Cloud",
+    "description": "Navbar item with label Cloud"
+  },
+  "item.label.TagHub": {
+    "message": "TagHub",
+    "description": "Navbar item with label TagHub"
+  },
+  "item.label.Device": {
+    "message": "Device",
+    "description": "Navbar item with label Device"
+  },
+  "item.label.agent-api": {
+    "message": "agent-api",
+    "description": "Navbar item with label agent-api"
+  }
+}

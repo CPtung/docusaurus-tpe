@@ -4,17 +4,28 @@ const path = require('path');
 
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
-(module.exports = {
+module.exports = {
   title: 'ThingsPro',
   tagline: 'Oh. So. Pro',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://tpe-document-demo.netlify.app/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
-
+  organizationName: 'MOXA-ISD', // Usually your GitHub org/user name.
+  projectName: 'tpe-website', // Usually your repo name.
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh'],
+    localeConfigs: {
+      'en': {
+        label: 'English',
+      },
+      'zh': {
+        label: '中文-台灣🇹🇼',
+      },
+    },
+  },
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -24,18 +35,14 @@ const path = require('path');
           //           sidebarPath: require.resolve('./sidebars.js'),
           sidebarPath: path.resolve(__dirname, './sidebars.json'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
+          editUrl: 'https://github.com/CPtung/docusaurus-tpe/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/main/website/blog/',
+            'https://github.com/CPtung/docusaurus-tpe/tree/main/',
         },
-        /*api: {
-          sidebarPath: path.resolve(__dirname, './sidebars.json'),
-          editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
-        },*/
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -84,7 +91,6 @@ const path = require('path');
       },
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -134,6 +140,10 @@ const path = require('path');
             position: 'right',
             dropdownItemsAfter: [],
             dropdownActiveClassDisabled: true,
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
           },
         ],
       },
@@ -187,4 +197,4 @@ const path = require('path');
         darkTheme: darkCodeTheme,
       },
     }),
-});
+};
