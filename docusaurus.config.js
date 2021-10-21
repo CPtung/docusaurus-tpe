@@ -32,7 +32,6 @@ module.exports = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          //           sidebarPath: require.resolve('./sidebars.js'),
           sidebarPath: path.resolve(__dirname, './sidebars.json'),
           // Please change this to your repo.
           editUrl: 'https://github.com/CPtung/docusaurus-tpe/blob/main/',
@@ -90,6 +89,16 @@ module.exports = {
         },
       },
     ],
+  ],
+  plugins: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        indexDocs: true,
+        indexPages: false,
+        indexBlog: true,
+      }
+    ]
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
